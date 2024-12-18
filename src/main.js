@@ -4,11 +4,19 @@ import App from './App.vue'
 import router from './router'
 import pinia from './store/index'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura'
 
 const app = createApp(App)
 
 pinia.use(piniaPluginPersistedstate)
 
-app.use(router)
-app.use(pinia)
-app.mount('#app')
+app
+  .use(router)
+  .use(pinia)
+  .use(PrimeVue, {
+    theme: {
+      preset: Aura
+    }
+  })
+  .mount('#app')
